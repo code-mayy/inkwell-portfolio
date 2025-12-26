@@ -1,25 +1,25 @@
 import { Download, ExternalLink } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { MagneticText } from '@/components/MagneticText';
 
 const Resume = () => {
   const resumeData = {
     education: [
       {
         degree: 'B.Tech Computer Science Engineering',
-        institution: 'University Name',
-        period: '2021 - 2025',
-        grade: 'CGPA: 8.5/10',
+        institution: 'College of Engineering Muttathara',
+        period: '2023 - 2027',
+        grade: 'Pursuing',
       },
     ],
     experience: [
       {
-        title: 'Software Engineering Intern',
-        company: 'Tech Company Name',
-        period: 'Jun 2024 - Aug 2024',
+        title: 'Full-Stack Development Intern',
+        company: 'Lifosys',
+        period: 'Oct 2025',
         points: [
-          'Developed RESTful APIs using Node.js and Express',
-          'Implemented responsive UI components with React',
-          'Collaborated on code reviews and agile sprints',
+          'Completed an intensive hands-on program covering frontend, backend, and database integration.',
+          'Built responsive interfaces and integrated database solutions.',
         ],
       },
     ],
@@ -42,17 +42,17 @@ const Resume = () => {
                 <p className="text-subheading mb-6">Resume</p>
               </ScrollReveal>
               <ScrollReveal delay={100}>
-                <h1 className="text-display">
+                <MagneticText as="h1" className="text-display">
                   My
                   <br />
                   Credentials.
-                </h1>
+                </MagneticText>
               </ScrollReveal>
             </div>
             <ScrollReveal delay={200}>
-              <a 
-                href="/resume.pdf" 
-                download
+              <a
+                href="/Copy%20of%20ABHIN%20M%20RAJ%20(5).pdf.pdf"
+                download="Abhin_M_Raj_Resume.pdf"
                 className="btn-invert inline-flex items-center gap-2"
               >
                 <Download size={16} />
@@ -69,16 +69,16 @@ const Resume = () => {
           {/* Header */}
           <ScrollReveal>
             <div className="text-center mb-12 pb-8 border-b-2 border-foreground">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Your Name</h2>
-              <p className="font-mono text-sm mb-4">Computer Science Engineering Student</p>
+              <MagneticText as="h2" className="text-3xl md:text-4xl font-bold mb-2">Abhin M Raj</MagneticText>
+              <MagneticText as="p" className="font-mono text-sm mb-4">Automation Architect & AI Prompt Engineer</MagneticText>
               <div className="flex flex-wrap justify-center gap-4 font-mono text-sm">
-                <span>email@example.com</span>
+                <span>abhinmraj@gmail.com</span>
                 <span>•</span>
-                <span>+91 XXXXX XXXXX</span>
+                <span>Thiruvanthapuram, Kerala</span>
                 <span>•</span>
-                <span>LinkedIn</span>
+                <span>linkedin.com/in/abhinmraj</span>
                 <span>•</span>
-                <span>GitHub</span>
+                <span>github.com/code-mayy</span>
               </div>
             </div>
           </ScrollReveal>
@@ -90,12 +90,12 @@ const Resume = () => {
               {resumeData.education.map((edu, index) => (
                 <div key={index} className="flex flex-col md:flex-row md:justify-between mb-4">
                   <div>
-                    <p className="font-bold text-lg">{edu.degree}</p>
-                    <p className="text-body">{edu.institution}</p>
+                    <MagneticText as="p" className="font-bold text-lg">{edu.degree}</MagneticText>
+                    <MagneticText as="p" className="text-body">{edu.institution}</MagneticText>
                   </div>
                   <div className="md:text-right">
-                    <p className="font-mono text-sm">{edu.period}</p>
-                    <p className="font-mono text-sm">{edu.grade}</p>
+                    <MagneticText as="p" className="font-mono text-sm">{edu.period}</MagneticText>
+                    <MagneticText as="p" className="font-mono text-sm">{edu.grade}</MagneticText>
                   </div>
                 </div>
               ))}
@@ -110,10 +110,10 @@ const Resume = () => {
                 <div key={index} className="mb-6">
                   <div className="flex flex-col md:flex-row md:justify-between mb-2">
                     <div>
-                      <p className="font-bold text-lg">{exp.title}</p>
-                      <p className="text-body">{exp.company}</p>
+                      <MagneticText as="p" className="font-bold text-lg">{exp.title}</MagneticText>
+                      <MagneticText as="p" className="text-body">{exp.company}</MagneticText>
                     </div>
-                    <p className="font-mono text-sm">{exp.period}</p>
+                    <MagneticText as="p" className="font-mono text-sm">{exp.period}</MagneticText>
                   </div>
                   <ul className="list-disc list-inside space-y-1">
                     {exp.points.map((point, i) => (
@@ -156,28 +156,28 @@ const Resume = () => {
       <section className="section-padding bg-foreground text-background">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="text-heading mb-8">
+            <MagneticText as="h2" className="text-heading mb-8">
               Ready to download?
-            </h2>
+            </MagneticText>
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <p className="text-body mb-8 max-w-xl mx-auto">
-              Get the complete resume in PDF format with all details 
+              Get the complete resume in PDF format with all details
               about my education, experience, and achievements.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200}>
             <div className="flex flex-wrap justify-center gap-4">
-              <a 
-                href="/resume.pdf"
-                download
+              <a
+                href="/Copy%20of%20ABHIN%20M%20RAJ%20(5).pdf.pdf"
+                download="Abhin_M_Raj_Resume.pdf"
                 className="inline-flex items-center gap-2 bg-background text-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:text-background border-2 border-background transition-colors"
               >
                 <Download size={16} />
                 Download PDF
               </a>
-              <a 
-                href="https://linkedin.com"
+              <a
+                href="https://www.linkedin.com/in/abhinmraj"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-transparent text-background px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-background hover:text-foreground border-2 border-background transition-colors"

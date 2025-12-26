@@ -229,15 +229,19 @@
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
 }
 
 @keyframes char-fade {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 1;
   }
@@ -280,4 +284,40 @@ html {
 .page-transition-exit-active {
   opacity: 0;
   transition: opacity 300ms;
+}
+
+/* Hover Magnify Effect */
+.hover-magnify {
+  @apply transition-transform duration-300 ease-out;
+  /* Removed inline-block to prevent layout shift */
+}
+
+.hover-magnify:hover {
+  @apply scale-110;
+}
+
+@keyframes soft-ripple {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  25% {
+    transform: translateY(-2px) scale(1.02) skewX(1deg);
+  }
+
+  50% {
+    transform: translateY(2px) scale(0.99) skewX(-1deg);
+  }
+
+  75% {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-soft-ripple {
+  animation: soft-ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }

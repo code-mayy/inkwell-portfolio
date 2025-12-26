@@ -1,18 +1,18 @@
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { MagneticText } from '@/components/MagneticText';
 
 const About = () => {
   const education = [
     {
-      year: '2021 - 2025',
+      year: '2023 - 2027',
       degree: 'B.Tech Computer Science Engineering',
-      institution: 'University Name',
-      details: 'CGPA: 8.5/10',
+      institution: 'College of Engineering Muttathara',
     },
     {
-      year: '2019 - 2021',
+      year: '2021 - 2023',
       degree: 'Higher Secondary (PCM)',
-      institution: 'High School Name',
-      details: 'Percentage: 92%',
+      institution: 'Govt Higher Secondary School Kummil',
+      details: 'Percentage: 85%',
     },
   ];
 
@@ -22,16 +22,14 @@ const About = () => {
       <section className="section-padding min-h-[60vh] flex items-center border-b-2 border-foreground">
         <div className="max-w-4xl">
           <ScrollReveal>
-            <p className="text-subheading mb-6">About Me</p>
+            <MagneticText as="p" className="text-subheading mb-6">About Me</MagneticText>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <h1 className="text-display mb-8">
-              Crafting the future,
+            <MagneticText as="h1" className="text-display mb-8">
+              Where language
               <br />
-              one line of code
-              <br />
-              at a time.
-            </h1>
+              becomes logic.
+            </MagneticText>
           </ScrollReveal>
         </div>
       </section>
@@ -45,52 +43,45 @@ const About = () => {
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <p className="text-body mb-6">
-              I'm a dedicated Computer Science Engineering student with a passion 
-              for building innovative software solutions. My journey in tech began 
-              with curiosity about how things work, and has evolved into a deep 
-              commitment to mastering the craft of software development.
+              I am an Automation Architect and Prompt Engineer who sees code as a language of logic.
+              My journey involves orchestrating systems where human intent is perfectly translated into machine execution.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200}>
             <p className="text-body mb-6">
-              I specialize in full-stack web development, with experience in 
-              React, Node.js, and various database technologies. I'm constantly 
-              exploring new technologies and methodologies to stay at the cutting 
-              edge of the industry.
+              I specialize in designing end-to-end workflows, integrating AI agents with robust backends,
+              and ensuring that every prompt serves a functional, production-ready purpose.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={300}>
             <p className="text-body">
-              Beyond coding, I actively participate in hackathons, contribute to 
-              open-source projects, and enjoy solving algorithmic challenges on 
-              competitive programming platforms.
+              Beyond architecture, I obsess over efficiency, scalability, and the seamless
+              fusion of traditional software engineering with the new frontier of Generative AI.
             </p>
           </ScrollReveal>
-        </div>
+        </div >
 
         {/* Right - White Background */}
-        <div className="section-padding">
+        < div className="section-padding" >
           <ScrollReveal>
             <p className="text-subheading mb-6">Career Objective</p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <h2 className="text-heading mb-8">
-              To leverage my technical skills and creative problem-solving 
-              abilities to develop impactful software solutions.
+              To build systems that think, adapt, and execute.
             </h2>
-          </ScrollReveal>
+          </ScrollReveal >
           <ScrollReveal delay={200}>
             <p className="text-body">
-              I aim to work in an environment that challenges me to grow, 
-              collaborate with talented individuals, and contribute to 
-              projects that make a meaningful difference in people's lives.
+              I aim to work where complexity meets clarity—creating automations that
+              reduce friction and empower users to do more with less.
             </p>
-          </ScrollReveal>
-        </div>
-      </section>
+          </ScrollReveal >
+        </div >
+      </section >
 
       {/* Education Timeline */}
-      <section className="section-padding border-t-2 border-foreground">
+      < section className="section-padding border-t-2 border-foreground" >
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <p className="text-subheading mb-6">Education</p>
@@ -104,7 +95,7 @@ const About = () => {
               <ScrollReveal key={index} delay={200 + index * 100}>
                 <div className="timeline-item">
                   <p className="font-mono text-sm mb-2">{edu.year}</p>
-                  <h3 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h3>
+                  <MagneticText as="h3" className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</MagneticText>
                   <p className="text-body mb-1">{edu.institution}</p>
                   <p className="font-mono text-sm">{edu.details}</p>
                 </div>
@@ -112,10 +103,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Personal Interests */}
-      <section className="section-padding bg-foreground text-background">
+      < section className="section-padding bg-foreground text-background" >
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <p className="text-subheading mb-6 opacity-60">Beyond Code</p>
@@ -158,8 +149,8 @@ const About = () => {
             </ScrollReveal>
           </div>
         </div>
-      </section>
-    </main>
+      </section >
+    </main >
   );
 };
 

@@ -5,7 +5,6 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Skills', path: '/skills' },
   { name: 'Projects', path: '/projects' },
   { name: 'Experience', path: '/experience' },
   { name: 'Resume', path: '/resume' },
@@ -20,7 +19,7 @@ export const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b-2 border-foreground">
       <div className="flex items-center justify-between px-6 md:px-12 py-4">
         <Link to="/" className="font-mono text-sm font-bold tracking-widest uppercase">
-          Portfolio
+          Abhin M Raj
         </Link>
 
         {/* Desktop Navigation */}
@@ -29,9 +28,8 @@ export const Navigation = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`nav-link ${
-                location.pathname === link.path ? 'after:translate-x-0' : ''
-              }`}
+              className={`nav-link hover-magnify ${location.pathname === link.path ? 'after:translate-x-0' : ''
+                }`}
             >
               {link.name}
             </Link>

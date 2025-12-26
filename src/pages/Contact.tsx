@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Send, Mail, Linkedin, Github, MapPin } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { MagneticText } from '@/components/MagneticText';
 import { toast } from 'sonner';
+import { supabase } from '@/lib/supabase';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,10 +13,32 @@ const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Message sent successfully! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    const loadingToast = toast.loading('Sending message...');
+
+    try {
+      const { error } = await supabase
+        .from('messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+        ]);
+
+      if (error) throw error;
+
+      toast.dismiss(loadingToast);
+      toast.success('Message sent successfully! I\'ll get back to you soon.');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.dismiss(loadingToast);
+      toast.error('Failed to send message. Please try again or email directly.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,10 +46,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Mail, label: 'Email', value: 'your.email@example.com', href: 'mailto:your.email@example.com' },
-    { icon: Linkedin, label: 'LinkedIn', value: '/in/yourprofile', href: 'https://linkedin.com' },
-    { icon: Github, label: 'GitHub', value: '/yourusername', href: 'https://github.com' },
-    { icon: MapPin, label: 'Location', value: 'City, Country', href: '#' },
+    { icon: Mail, label: 'Email', value: 'abhinmraj@gmail.com', href: 'mailto:abhinmraj@gmail.com' },
+    { icon: Linkedin, label: 'LinkedIn', value: '/in/abhinmraj', href: 'https://www.linkedin.com/in/abhinmraj' },
+    { icon: Github, label: 'GitHub', value: '@code-mayy', href: 'https://github.com/code-mayy' },
+    { icon: MapPin, label: 'Location', value: 'Thiruvanthapuram, Kerala', href: '#' },
   ];
 
   return (
@@ -37,15 +61,15 @@ const Contact = () => {
             <p className="text-subheading mb-6">Get in Touch</p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <h1 className="text-display mb-8">
+            <MagneticText as="h1" className="text-display mb-8">
               Let's
               <br />
               connect.
-            </h1>
+            </MagneticText>
           </ScrollReveal>
           <ScrollReveal delay={200}>
             <p className="text-body max-w-xl">
-              Have a project in mind? Looking for an intern? Or just want to 
+              Have a project in mind? Looking for an intern? Or just want to
               say hello? I'd love to hear from you.
             </p>
           </ScrollReveal>
@@ -139,15 +163,15 @@ const Contact = () => {
             <p className="text-subheading mb-6 opacity-60">Contact Info</p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <h2 className="text-heading mb-12">
+            <MagneticText as="h2" className="text-heading mb-12">
               Other ways to reach me
-            </h2>
+            </MagneticText>
           </ScrollReveal>
 
           <div className="space-y-8">
             {socialLinks.map((link, index) => (
               <ScrollReveal key={link.label} delay={200 + index * 100}>
-                <a 
+                <a
                   href={link.href}
                   target={link.href.startsWith('http') ? '_blank' : undefined}
                   rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -170,7 +194,7 @@ const Contact = () => {
             <div className="mt-16 pt-8 border-t border-background/20">
               <p className="font-mono text-sm uppercase tracking-widest opacity-60 mb-2">Availability</p>
               <p className="text-body">
-                Currently open for internship opportunities and 
+                Currently open for internship opportunities and
                 freelance projects. Response time: 24-48 hours.
               </p>
             </div>
@@ -182,9 +206,9 @@ const Contact = () => {
       <section className="section-padding border-t-2 border-foreground">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <p className="font-mono text-sm uppercase tracking-widest mb-4">
+            <MagneticText as="p" className="font-mono text-sm uppercase tracking-widest mb-4">
               Thank you for visiting
-            </p>
+            </MagneticText>
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <p className="text-body">

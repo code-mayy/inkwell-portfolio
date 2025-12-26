@@ -1,55 +1,56 @@
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { MagneticText } from '@/components/MagneticText';
 import { Trophy, Briefcase, Award, Code } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
-      type: 'internship',
-      icon: Briefcase,
-      title: 'Software Engineering Intern',
-      organization: 'Tech Company Name',
-      period: 'Jun 2024 - Aug 2024',
-      description: 'Developed and maintained web applications using React and Node.js. Collaborated with senior developers on production features.',
-    },
-    {
       type: 'hackathon',
-      icon: Trophy,
-      title: 'Smart India Hackathon',
-      organization: 'Winner - National Level',
-      period: 'Dec 2023',
-      description: 'Built an innovative solution for agricultural supply chain management. Led a team of 6 members.',
-    },
-    {
-      type: 'certification',
-      icon: Award,
-      title: 'AWS Certified Cloud Practitioner',
-      organization: 'Amazon Web Services',
-      period: 'Sep 2023',
-      description: 'Validated cloud concepts, AWS services, security, architecture, pricing, and support knowledge.',
+      icon: Code,
+      title: 'Smart India Hackathon Participant',
+      organization: 'Selected at Institutional Level (Waitlisted National)',
+      period: 'Nov 2025',
+      description: 'Selected for the prestigious national hackathon, demonstrating technical excellence in problem-solving.',
     },
     {
       type: 'project',
+      icon: Briefcase,
+      title: 'SIH Prelims Hackathon Organizer',
+      organization: 'College of Engineering Muttathara',
+      period: 'Oct 2025',
+      description: 'Coordinated hackathon operations and supported teams through the preliminary round.',
+    },
+    {
+      type: 'internship',
       icon: Code,
-      title: 'College Technical Fest Lead',
-      organization: 'University Name',
-      period: 'Jan 2023 - Mar 2023',
-      description: 'Managed the technical events and workshops. Organized coding competitions with 500+ participants.',
+      title: 'Full-Stack Development Internship (1 Week)',
+      organization: 'Lifosys',
+      period: 'Oct 2025',
+      description: 'Completed an intensive hands-on program covering frontend, backend, and database integration.',
     },
     {
-      type: 'hackathon',
+      type: 'award',
       icon: Trophy,
-      title: 'MLH Local Hack Day',
-      organization: '2nd Runner Up',
-      period: 'Nov 2022',
-      description: 'Built a real-time collaborative code editor with video calling features in 24 hours.',
+      title: 'Top 10 Finalist (Kerala Level)',
+      organization: 'State Innovation Challenge',
+      period: 'Sep 2025',
+      description: 'Recognized among the top ten teams statewide for innovative problem-solving.',
     },
     {
-      type: 'certification',
-      icon: Award,
-      title: 'Meta Frontend Developer',
-      organization: 'Meta (Coursera)',
-      period: 'Aug 2022',
-      description: 'Comprehensive program covering React, responsive design, and modern web development practices.',
+      type: 'project',
+      icon: Briefcase,
+      title: 'IEDC Ignite Event Organizer',
+      organization: 'College of Engineering Muttathara',
+      period: 'Aug 2024',
+      description: 'Led the planning and execution of an innovation-focused event encouraging student startups.',
+    },
+    {
+      type: 'workshop',
+      icon: Code,
+      title: 'Flutter Development Workshop',
+      organization: 'College of Engineering Muttathara',
+      period: 'Feb 2024',
+      description: 'Gained hands-on experience building cross-platform mobile interfaces using Flutter.',
     },
   ];
 
@@ -62,15 +63,15 @@ const Experience = () => {
             <p className="text-subheading mb-6">Experience & Achievements</p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <h1 className="text-display mb-8">
+            <MagneticText as="h1" className="text-display mb-8">
               Journey of
               <br />
               growth.
-            </h1>
+            </MagneticText>
           </ScrollReveal>
           <ScrollReveal delay={200}>
             <p className="text-body max-w-xl">
-              Milestones that have shaped my technical expertise and 
+              Milestones that have shaped my technical expertise and
               professional development throughout my academic journey.
             </p>
           </ScrollReveal>
@@ -98,9 +99,9 @@ const Experience = () => {
                       <span className="font-mono text-sm uppercase tracking-widest">
                         {exp.period}
                       </span>
-                      <h3 className="text-xl md:text-2xl font-bold mt-2 mb-1">
+                      <MagneticText as="h3" className="text-xl md:text-2xl font-bold mt-2 mb-1">
                         {exp.title}
-                      </h3>
+                      </MagneticText>
                       <p className="font-mono text-sm mb-4">{exp.organization}</p>
                       <p className="text-body">{exp.description}</p>
                     </div>
@@ -116,9 +117,9 @@ const Experience = () => {
       <section className="grid md:grid-cols-4 border-t-2 border-foreground">
         {[
           { number: '5+', label: 'Hackathons' },
-          { number: '3', label: 'Internships' },
+          { number: '1', label: 'Internships' },
           { number: '10+', label: 'Projects' },
-          { number: '8', label: 'Certifications' },
+          { number: '10+', label: 'Certifications' },
         ].map((stat, index) => (
           <ScrollReveal key={stat.label} delay={index * 100}>
             <div className={`section-padding text-center ${index < 3 ? 'border-b md:border-b-0 md:border-r' : ''} border-foreground`}>
@@ -141,11 +142,10 @@ const Experience = () => {
 
           <div className="space-y-6">
             {[
-              'Dean\'s List for Academic Excellence (2023)',
-              'Top 100 in CodeChef Long Challenge',
-              'Published Technical Article with 10K+ Views',
-              'Open Source Contributor - 50+ Contributions',
-              'Campus Ambassador - Major Tech Company',
+              'Top 10 Finalist - TiE U Kerala',
+              'IEDC Event Coordinator',
+              'AI Prompt Engineer',
+              'IEDC Operations & Quality Campus Sub-Lead',
             ].map((achievement, index) => (
               <ScrollReveal key={index} delay={200 + index * 50}>
                 <div className="flex items-center gap-4 border-b border-background/20 pb-4">
