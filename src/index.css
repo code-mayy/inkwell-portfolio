@@ -168,6 +168,39 @@
   .skill-item:hover {
     @apply bg-foreground text-background;
   }
+
+  /* Name Rain Animation */
+  .name-rain {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+    z-index: 0;
+  }
+
+  .name-rain .name-column {
+    @apply absolute top-0 font-mono text-sm tracking-[0.5em] flex flex-col items-center;
+    opacity: 0.06;
+    color: hsl(var(--foreground));
+    animation: rain-fall linear infinite;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .name-rain .name-column span {
+    @apply block py-1;
+    animation: char-fade 2s ease-in-out infinite;
+  }
+
+  .name-rain-inverted .name-column {
+    color: hsl(var(--background));
+  }
+
+  /* Inverted Section */
+  .section-inverted {
+    @apply bg-foreground text-background;
+  }
+
+  .section-inverted .name-rain .name-column {
+    color: hsl(var(--background));
+  }
 }
 
 @layer utilities {
@@ -189,6 +222,24 @@
 
   .clip-inset-full {
     clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes char-fade {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
