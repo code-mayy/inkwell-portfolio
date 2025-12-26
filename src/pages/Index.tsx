@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { TypeWriter } from '@/components/TypeWriter';
-import { GeometricShape } from '@/components/GeometricShape';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { NameRain } from '@/components/NameRain';
 
 const Index = () => {
   const roles = ['CSE Student', 'Developer', 'Problem Solver', 'Tech Enthusiast'];
@@ -10,21 +10,22 @@ const Index = () => {
   return (
     <main className="pt-16">
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col lg:flex-row">
-        {/* Left Side - Content */}
-        <div className="flex-1 flex flex-col justify-center section-padding">
-          <div className="max-w-2xl">
+      <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <NameRain />
+        
+        <div className="section-padding relative z-10">
+          <div className="max-w-4xl">
             <p className="text-subheading mb-6 animate-fade-in">
-              B.Tech Computer Science Engineering
+              Computer Science Engineering Student
             </p>
             
-            <h1 className="text-display mb-8 animate-fade-in animation-delay-200">
-              Building
-              <br />
-              Systems,
-              <br />
-              Code & Ideas
+            <h1 className="text-display mb-6 animate-fade-in animation-delay-200">
+              Abhin M Raj
             </h1>
+            
+            <p className="font-sans text-xl md:text-2xl lg:text-3xl font-light mb-8 animate-fade-in animation-delay-400">
+              Building logic, systems, and clean code.
+            </p>
             
             <div className="font-mono text-lg md:text-xl mb-12 animate-fade-in animation-delay-400">
               <TypeWriter words={roles} />
@@ -42,22 +43,16 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Right Side - Geometric Shape */}
-        <div className="flex-1 hidden lg:flex items-center justify-center bg-foreground">
-          <div className="w-full h-full flex items-center justify-center text-background">
-            <GeometricShape />
-          </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <ArrowDown size={24} className="animate-bounce" />
         </div>
       </section>
 
-      {/* Scroll Indicator */}
-      <div className="flex justify-center py-8">
-        <ArrowDown size={24} className="animate-bounce" />
-      </div>
-
-      {/* Quick Intro */}
-      <section className="section-padding border-t-2 border-foreground">
-        <div className="max-w-4xl mx-auto">
+      {/* Quick Intro - White Section */}
+      <section className="section-padding border-t-2 border-foreground relative overflow-hidden">
+        <NameRain />
+        <div className="max-w-4xl mx-auto relative z-10">
           <ScrollReveal>
             <p className="text-subheading mb-4">About</p>
           </ScrollReveal>
@@ -82,54 +77,58 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Quick Links Grid */}
-      <section className="grid md:grid-cols-3 border-t-2 border-foreground">
-        <Link 
-          to="/skills" 
-          className="section-padding border-b-2 md:border-b-0 md:border-r-2 border-foreground hover:bg-foreground hover:text-background transition-colors group"
-        >
-          <ScrollReveal>
-            <p className="text-subheading mb-4">01</p>
-            <h3 className="text-heading mb-4">Skills</h3>
-            <p className="text-body mb-6">
-              Programming languages, frameworks, and tools I work with.
-            </p>
-            <ArrowRight size={24} className="transform group-hover:translate-x-2 transition-transform" />
-          </ScrollReveal>
-        </Link>
+      {/* Quick Links Grid - Inverted Section */}
+      <section className="section-inverted relative overflow-hidden">
+        <NameRain inverted />
+        <div className="grid md:grid-cols-3 relative z-10">
+          <Link 
+            to="/skills" 
+            className="section-padding border-b-2 md:border-b-0 md:border-r-2 border-background hover:bg-background hover:text-foreground transition-colors group"
+          >
+            <ScrollReveal>
+              <p className="text-subheading mb-4 opacity-60">01</p>
+              <h3 className="text-heading mb-4">Skills</h3>
+              <p className="text-body mb-6 opacity-80">
+                Programming languages, frameworks, and tools I work with.
+              </p>
+              <ArrowRight size={24} className="transform group-hover:translate-x-2 transition-transform" />
+            </ScrollReveal>
+          </Link>
 
-        <Link 
-          to="/projects" 
-          className="section-padding border-b-2 md:border-b-0 md:border-r-2 border-foreground hover:bg-foreground hover:text-background transition-colors group"
-        >
-          <ScrollReveal delay={100}>
-            <p className="text-subheading mb-4">02</p>
-            <h3 className="text-heading mb-4">Projects</h3>
-            <p className="text-body mb-6">
-              Selected works showcasing my technical abilities.
-            </p>
-            <ArrowRight size={24} className="transform group-hover:translate-x-2 transition-transform" />
-          </ScrollReveal>
-        </Link>
+          <Link 
+            to="/projects" 
+            className="section-padding border-b-2 md:border-b-0 md:border-r-2 border-background hover:bg-background hover:text-foreground transition-colors group"
+          >
+            <ScrollReveal delay={100}>
+              <p className="text-subheading mb-4 opacity-60">02</p>
+              <h3 className="text-heading mb-4">Projects</h3>
+              <p className="text-body mb-6 opacity-80">
+                Selected works showcasing my technical abilities.
+              </p>
+              <ArrowRight size={24} className="transform group-hover:translate-x-2 transition-transform" />
+            </ScrollReveal>
+          </Link>
 
-        <Link 
-          to="/resume" 
-          className="section-padding hover:bg-foreground hover:text-background transition-colors group"
-        >
-          <ScrollReveal delay={200}>
-            <p className="text-subheading mb-4">03</p>
-            <h3 className="text-heading mb-4">Resume</h3>
-            <p className="text-body mb-6">
-              Download my complete resume for more details.
-            </p>
-            <ArrowRight size={24} className="transform group-hover:translate-x-2 transition-transform" />
-          </ScrollReveal>
-        </Link>
+          <Link 
+            to="/resume" 
+            className="section-padding hover:bg-background hover:text-foreground transition-colors group"
+          >
+            <ScrollReveal delay={200}>
+              <p className="text-subheading mb-4 opacity-60">03</p>
+              <h3 className="text-heading mb-4">Resume</h3>
+              <p className="text-body mb-6 opacity-80">
+                Download my complete resume for more details.
+              </p>
+              <ArrowRight size={24} className="transform group-hover:translate-x-2 transition-transform" />
+            </ScrollReveal>
+          </Link>
+        </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="section-padding bg-foreground text-background">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Another White Section */}
+      <section className="section-padding relative overflow-hidden">
+        <NameRain />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <ScrollReveal>
             <h2 className="text-heading mb-8">
               Let's work together
@@ -144,7 +143,7 @@ const Index = () => {
           <ScrollReveal delay={200}>
             <Link 
               to="/contact" 
-              className="inline-flex items-center gap-2 bg-background text-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:text-background border-2 border-background transition-colors"
+              className="btn-invert inline-flex items-center gap-2"
             >
               Contact Me
               <ArrowRight size={16} />
