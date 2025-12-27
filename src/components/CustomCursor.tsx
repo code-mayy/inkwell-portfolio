@@ -79,7 +79,7 @@ export const CustomCursor = () => {
         <>
             <div
                 ref={ringRef}
-                className="fixed top-0 left-0 w-6 h-6 bg-white mix-blend-difference rounded-full pointer-events-none z-[9998] transition-opacity duration-200 ease-out will-change-transform hidden md:block"
+                className="fixed top-0 left-0 w-6 h-6 bg-white mix-blend-difference rounded-full pointer-events-none z-[9999] transition-opacity duration-200 ease-out hidden md:block"
                 style={{ transform: 'translate(-100px, -100px)' }}
             />
             <style>{`
