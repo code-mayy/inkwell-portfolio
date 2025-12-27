@@ -10,45 +10,25 @@ export const CustomCursor = () => {
         if (!ring) return;
 
         const handleMouseMove = (e: MouseEvent) => {
-            // Direct DOM update for zero latency (matching the previous "small circle" behavior)
+            // Direct DOM update for zero latency
             // Center the 24px ring (12px offset)
             const x = e.clientX - 12;
             const y = e.clientY - 12;
-
-            // We use a CSS variable for position so we can separate strictly transform-based animations (scale) 
-            // from positional updates, OR we just overwrite transform.
-            // Overwriting transform directly is fastest but tricky if we also want scale in the same transform string.
-            // Let's use the variable approach for cleaner animation composition if we can, 
-            // OR just construct the string dynamically. 
-            // Constructing string is safer for zero-latency + scale combinations without conflict.
-
             const scale = getScale();
             ring.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
         };
 
-        const handleMouseDown = (e: MouseEvent) => {
+        const handleMouseDown = () => {
             isClicking.current = true;
-            updateRingVisuals();
-            // Force immediate update to apply scale
-            // We need to know current mouse pos, but we don't save it in ref? 
-            // Actually, mousemove happens way more often. 
-            // For click reaction to be instant, we rely on the class/style update or trigger a fresh transform 
-            // if we stored the coordinates.
-            // To keep it simple: We rely on the visual class changes for border/color, 
-            // and the next mousemove (or a manual trigger if we tracked pos) for scale.
-            // BUT, if user clicks without moving, scale might not update if we only do it in mousemove.
-            // Let's store position in a ref.
-
             forceUpdateTransform();
         };
 
         const handleMouseUp = () => {
             isClicking.current = false;
-            updateRingVisuals();
             forceUpdateTransform();
         };
 
-        // Track position for click updates when not moving
+        // Track position for updates when not moving (e.g. click in place)
         let currentX = -100;
         let currentY = -100;
 
@@ -65,31 +45,9 @@ export const CustomCursor = () => {
         };
 
         const getScale = () => {
-            // Hover takes precedence for size? Or click?
-            // Usually Click shrinks, Hover expands.
             if (isClicking.current) return 0.8;
-            if (isHovering.current) return 1.5; // Slightly smaller expand than before (was 3) to keep it responsive/controlled
+            if (isHovering.current) return 1.5;
             return 1;
-        };
-
-        const updateRingVisuals = () => {
-            if (!ring) return;
-
-            // Logic for visual style (border, blur, opacity) - agnostic of Transform
-            // We handle Color and Border here
-            if (isHovering.current) {
-                // DIFFERENCE MODE: Background white + mix-blend-difference
-                // This inverts the color under the cursor.
-                ring.classList.add('bg-white', 'mix-blend-difference', 'border-transparent', 'scale-[1.5]');
-                ring.classList.remove('bg-transparent', 'border-black', 'dark:border-white', 'bg-black/10', 'dark:bg-white/10', 'backdrop-blur-[2px]');
-            } else {
-                ring.classList.add('bg-transparent', 'border-black', 'dark:border-white');
-                ring.classList.remove('bg-white', 'mix-blend-difference', 'border-transparent', 'scale-[1.5]');
-            }
-
-            if (isClicking.current) {
-                // ring.classList.add('border-black/50', 'dark:border-white/50'); 
-            }
         };
 
         const handleHoverCheck = (e: MouseEvent) => {
@@ -99,8 +57,7 @@ export const CustomCursor = () => {
 
             if (isHovering.current !== newHover) {
                 isHovering.current = newHover;
-                updateRingVisuals();
-                forceUpdateTransform(); // Trigger scale change immediately
+                forceUpdateTransform();
             }
         };
 
@@ -122,12 +79,14 @@ export const CustomCursor = () => {
         <>
             <div
                 ref={ringRef}
-                className="fixed top-0 left-0 w-6 h-6 border border-black dark:border-white rounded-full pointer-events-none z-[9998] transition-colors duration-200 ease-out will-change-transform"
+                className="fixed top-0 left-0 w-6 h-6 bg-white mix-blend-difference rounded-full pointer-events-none z-[9998] transition-opacity duration-200 ease-out will-change-transform hidden md:block"
                 style={{ transform: 'translate(-100px, -100px)' }}
             />
             <style>{`
-                body, a, button, input, [role="button"] {
-                    cursor: none !important;
+                @media (min-width: 768px) {
+                    body, a, button, input, [role="button"] {
+                        cursor: none !important;
+                    }
                 }
             `}</style>
         </>
